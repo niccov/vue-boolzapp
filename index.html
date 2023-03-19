@@ -1,0 +1,152 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Boolzapp</title>
+
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.1/css/all.min.css" integrity="sha512-MV7K8+y+gLIBoVD59lQIYicR65iaqukzvf/nwasF0nqhPay5w/9lJmVM2hMDcnK1OnMGCdVK+iQrJ7lzPJQd1w==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+    <script src="https://unpkg.com/vue@3/dist/vue.global.js"></script>
+
+    <div id="app">
+        <!-- background -->
+        <div class="background-top"></div>
+        <div class="background-bottom"></div>
+        <!-- /background -->
+
+        <!-- main page -->
+        <div class="container-page">
+            <!-- left side -->
+            <div id="left-side">
+                <!-- my-profile -->
+                <div id="my-profile">
+            
+                    <div id="container-my-profile-img">
+                        <img src="img/avatar_io.jpg" alt="my-avatar">
+                        <div><b>Sofia</b></div>
+                    </div>
+
+                    <div id="my-profile-functions">
+                        <i class="fa-solid fa-circle-notch"></i>
+                        <i class="fa-solid fa-message"></i>
+                        <i class="fa-solid fa-ellipsis-vertical"></i>
+                    </div>
+                    
+                </div>
+                <!-- /my-profile -->
+
+                <!-- notifications -->
+                <div id="notifications">
+                    <div id="container-bell-slash">
+                        <i class="fa-solid fa-bell-slash"></i>
+                    </div>
+
+                    <div id="notifications-text">
+                        <div>Ricevi notifiche di nuovi messaggi</div>
+                        <div>Attiva notifiche desktop</div>
+                    </div>
+                </div>
+                <!-- /notifications -->
+
+                <!-- search-new-chat -->
+                <div id="search-new-chat">
+                    <div><i class="fa-solid fa-magnifying-glass"></i></div>
+                    <div><input type="text" placeholder="Cerca o inizia una nuova chat"></div>
+                </div>
+                <!-- /search-new-chat -->
+
+                <!-- my-chats -->
+                <div id="my-chats">
+                    <div class="single-chat" v-for="(contact, index) in contacts" @click="changeContactsIndex(index)">
+                        <div class="single-chat-left">
+                           <div class="container-my-chats-img">
+                             <img :src="contact.avatar" alt="avatar 1">
+                           </div>
+
+                           <div class="my-chats-info">
+                             <div class="friends-name">{{contact.name}}</div>
+                             <div class="last-message">Ultimo messaggio inviato</div>
+                           </div>
+                        </div>  
+                        
+                        <div class="single-chat-right">
+                            <div class="single-chat-time">12:00</div>
+                        </div>
+                    </div>        
+                </div>
+                <!-- /my-chats -->
+            </div>
+            <!-- /left side -->
+
+            <!-- right-side -->
+            <div id="right-side">
+
+                <div id="friend-profile-functions">
+
+                    <div id="friend-profile-functions-left">
+
+                        <div id="friend-profile-functions-container-img">
+                            <img :src="contacts[contactsIndex].avatar" alt="avatar">
+                        </div>
+
+                        <div id="friend-profile-functions-info">
+                            {{contacts[contactsIndex].name}}
+                            <div>ultimo accesso alle 12:00</div>
+                        </div>
+
+                    </div>
+
+                    <div id="friend-profile-functions-right">
+                        <i class="fa-solid fa-bell-slash"></i>
+                        <i class="fa-solid fa-paperclip"></i>
+                        <i class="fa-solid fa-ellipsis-vertical"></i>
+                    </div>
+                </div>
+
+                <div id="chat">
+                    <div class="message-list">
+
+                        <div v-for="singleMessage in contacts[contactsIndex].messages" class="message-container" :class="singleMessage.status">
+                           <div class="message-text">
+                              {{singleMessage.message}}
+                           </div>
+                            
+                           <div class="message-time">
+                              {{singleMessage.date}}
+                           </div>
+                        </div>   
+
+                    </div>
+                </div>
+
+                <div id="emoji-text-audio">
+
+                    <div id="emoji">
+                        <i class="fa-regular fa-face-smile"></i>
+                    </div>
+
+                    <div id="input-text"  @keyup.enter="addMessage(contactsIndex)" :class="">
+                        <input v-model="newMessage" type="text" placeholder="Scrivi un messaggio">
+                    </div>
+
+                    <div id="audio">
+                        <i class="fa-solid fa-microphone"></i>
+                    </div>
+
+                </div>
+            </div>
+            <!-- /right-side -->
+        </div>
+         <!-- /main page -->
+
+
+    </div>
+   
+    <!-- script -->
+    <script type="text/javascript" src="js/script.js"></script>
+</body>
+</html>
