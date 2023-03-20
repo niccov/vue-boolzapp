@@ -119,7 +119,11 @@
                            <div class="message-text">
                               {{singleMessage.message}}
                            </div>
-                            
+                           
+                           <div class="chat-message-option">
+                               <i class="fa-solid fa-ellipsis-vertical"></i>
+                           </div>
+
                            <div class="message-time">
                               {{singleMessage.date}}
                            </div>
@@ -134,7 +138,7 @@
                         <i class="fa-regular fa-face-smile"></i>
                     </div>
 
-                    <div id="input-text" :class="">
+                    <div id="input-text">
                         <input v-model="newMessageInput" @keyup.enter="addMessage()" type="text" placeholder="Scrivi un messaggio">
                     </div>
 

@@ -39,8 +39,6 @@
     display: flex;
 
     font-family: Arial, Helvetica, sans-serif;
-    /* test */
-    border: 1px solid black;
 }
 
 /* left side */
@@ -62,9 +60,6 @@
     display: flex;
     justify-content: space-between;
     align-items: center;
-
-    /* test */
-    border: 1px solid grey;
 }
 
 #container-my-profile-img{
@@ -109,9 +104,6 @@
     display: flex;
     align-items: center;
     gap: 10px;
-
-    /* test */
-    border: 1px solid grey;
 }
 
 #container-bell-slash{
@@ -146,9 +138,6 @@
     display: flex;
     align-items: center;
     justify-content: center;
-
-    /* test */
-    border: 1px solid grey;
 }
 
 #search-new-chat-button{
@@ -186,8 +175,6 @@
     height: 70%;
 
     overflow: auto;
-    /* test */
-    border: 1px solid grey;
 }
 
 .single-chat{
@@ -231,7 +218,6 @@
 .last-message{
     font-size: 14px;
     color: grey;
-    text-decoration: underline;
 }
 
 .single-chat-time{
@@ -257,9 +243,6 @@
     display: flex;
     align-items: center;
     justify-content: space-between;
-
-    /* test */
-    border: 1px solid grey;
 }
 
 #friend-profile-functions-left{
@@ -303,9 +286,6 @@
     background-image: url(../img/mine.jpg);
 
     overflow: auto;
-
-    /* test */
-    border: 1px solid grey;
 }
 
 .message-list{
@@ -341,7 +321,17 @@
 
 .message-text{
     font-size: 15px;
-    padding: 15px;
+    padding: 20px;
+}
+
+.chat-message-option{
+    position: absolute;
+    right: 8px;
+    top: 6px;
+}
+
+.chat-message-option i{
+    font-size: 16px;
 }
 
 .message-time{
@@ -361,9 +351,6 @@
     background-color: #F3EEEA;
 
     display: flex;
-    
-    /* test */
-    border: 1px solid grey;
 }
 
 #emoji{
