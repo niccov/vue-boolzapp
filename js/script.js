@@ -184,7 +184,9 @@ createApp({
       
       contactsIndex: 0,
 
-      newMessage: "",
+      newMessageInput: "",
+
+      searchFriendInput:"",
       }
     },
 
@@ -193,9 +195,49 @@ createApp({
         this.contactsIndex = index;
       },
 
-      addMessage(contactsIndex) {
-        this.contacts[contactsIndex].messages.push(this.newMessage);
-        this.newMessage = "";
+      addMessage() {
+
+        const newMessage = {
+            date: '10/01/2020 15:51:00',
+            message: this.newMessageInput,
+            status: 'sent'
+        }
+
+        this.contacts[this.contactsIndex].messages.push(newMessage);
+        this.newMessageInput = "";
+       
+        const friendReply = {
+            date: '10/01/2020 15:51:00',
+            message: 'Ok',
+            status: 'received'
+        }
+
+        setTimeout(() => {
+
+            this.contacts[this.contactsIndex].messages.push(friendReply);
+
+        }, 1000);
+        
+      },
+
+      searchFriend() {
+
+        this.contacts.forEach(contact => {
+            
+            if(contact.name.toLowerCase().includes(this.searchFriendInput.toLowerCase())) {
+
+                contact.visible = true;
+    
+            } else {
+
+                contact.visible = false;
+            }
+
+    
+        });
+
+        this.searchFriendInput = "";
       }
+
     },
   }).mount('#app')

@@ -54,14 +54,19 @@
 
                 <!-- search-new-chat -->
                 <div id="search-new-chat">
-                    <div><i class="fa-solid fa-magnifying-glass"></i></div>
-                    <div><input type="text" placeholder="Cerca o inizia una nuova chat"></div>
+                    <div id="search-new-chat-button" @click="searchFriend">
+                        <i class="fa-solid fa-magnifying-glass"></i>
+                    </div>
+
+                    <div>
+                        <input v-model="searchFriendInput" type="text" placeholder="Cerca o inizia una nuova chat">
+                    </div>
                 </div>
                 <!-- /search-new-chat -->
 
                 <!-- my-chats -->
                 <div id="my-chats">
-                    <div class="single-chat" v-for="(contact, index) in contacts" @click="changeContactsIndex(index)">
+                    <div class="single-chat" v-for="(contact, index) in contacts" v-show="contact.visible" @click="changeContactsIndex(index)">
                         <div class="single-chat-left">
                            <div class="container-my-chats-img">
                              <img :src="contact.avatar" alt="avatar 1">
@@ -129,8 +134,8 @@
                         <i class="fa-regular fa-face-smile"></i>
                     </div>
 
-                    <div id="input-text"  @keyup.enter="addMessage(contactsIndex)" :class="">
-                        <input v-model="newMessage" type="text" placeholder="Scrivi un messaggio">
+                    <div id="input-text" :class="">
+                        <input v-model="newMessageInput" @keyup.enter="addMessage()" type="text" placeholder="Scrivi un messaggio">
                     </div>
 
                     <div id="audio">
